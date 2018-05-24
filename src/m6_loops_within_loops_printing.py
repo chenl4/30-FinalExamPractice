@@ -75,7 +75,7 @@ def shape(r):
     For purposes of "lining up", assume r is a single digit.
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Some tests are already written for you (above).
     #
     ####################################################################
@@ -88,18 +88,25 @@ def shape(r):
     #    TIME ESTIMATE:  15 minutes.
     # ------------------------------------------------------------------
 
-    ori_seq = ''
-    seq = ''
+    ori_seq = []
+    seq = []
 
     for k in range(r, 0, -1):
         for j in range(r, 0, -1):
             if j <= k:
-                seq = seq + '+'
+                seq = seq + ['+']
             if j > k:
-                seq = seq + ' '
-        seq = seq + '!'
-        for i in range(k, 0, -1):
-            seq = seq + i
+                seq = seq + [' ']
+        seq = seq + ['!']
+        for i in range(r):
+            if (k - i) > 0:
+                seq = seq + [(k - i)]
+            else:
+                seq = seq + ['-']
+        for y in range(len(seq)):
+            print(seq[y], end='')
+        print()
+        seq = ori_seq
 
 
 
